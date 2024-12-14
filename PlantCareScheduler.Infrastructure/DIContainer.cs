@@ -22,4 +22,11 @@ public static class DIContainer
             options.UseCosmos(accountEndpoint: accountEndpoint, accountKey: accountKey, databaseName: "PlantCareDB");
         });
     }
+
+    public static void EnsureDatabaseCreated(IServiceProvider serviceProvider)
+    {
+        using var scope = serviceProvider.CreateScope();
+        var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        context.Database.EnsureCreated();
+    }
 }
