@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PlantCareScheduler.Domain.Abstractions;
+using PlantCareScheduler.Domain.Plants;
+using PlantCareScheduler.Infrastructure.Repositories;
 
 namespace PlantCareScheduler.Infrastructure;
 public static class DIContainer
@@ -21,6 +24,10 @@ public static class DIContainer
         {
             options.UseCosmos(accountEndpoint: accountEndpoint, accountKey: accountKey, databaseName: "PlantCareDB");
         });
+
+        services.AddScoped<IPlantRepository, PlantRepository>();
+
+        services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<ApplicationDbContext>());
     }
 
     public static void EnsureDatabaseCreated(IServiceProvider serviceProvider)
