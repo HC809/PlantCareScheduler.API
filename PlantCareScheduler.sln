@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35521.163 d17.12
+VisualStudioVersion = 17.12.35521.163
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlantCareScheduler", "PlantCareScheduler\PlantCareScheduler.csproj", "{DEF34E0A-FEAD-4730-81D1-0264E9EED9C5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlantCareScheduler.API", "PlantCareScheduler\PlantCareScheduler.API.csproj", "{DEF34E0A-FEAD-4730-81D1-0264E9EED9C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7DFB35B3-7570-4DCB-8B59-7F97033ABA40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlantCareScheduler.Domain", "PlantCareScheduler.Domain\PlantCareScheduler.Domain.csproj", "{9079E14F-E716-4576-9D39-26E11F684623}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +19,16 @@ Global
 		{DEF34E0A-FEAD-4730-81D1-0264E9EED9C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEF34E0A-FEAD-4730-81D1-0264E9EED9C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEF34E0A-FEAD-4730-81D1-0264E9EED9C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9079E14F-E716-4576-9D39-26E11F684623}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9079E14F-E716-4576-9D39-26E11F684623}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9079E14F-E716-4576-9D39-26E11F684623}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9079E14F-E716-4576-9D39-26E11F684623}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DEF34E0A-FEAD-4730-81D1-0264E9EED9C5} = {7DFB35B3-7570-4DCB-8B59-7F97033ABA40}
+		{9079E14F-E716-4576-9D39-26E11F684623} = {7DFB35B3-7570-4DCB-8B59-7F97033ABA40}
 	EndGlobalSection
 EndGlobal
