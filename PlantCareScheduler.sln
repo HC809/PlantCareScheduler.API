@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7DFB35B3-757
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlantCareScheduler.Domain", "PlantCareScheduler.Domain\PlantCareScheduler.Domain.csproj", "{9079E14F-E716-4576-9D39-26E11F684623}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlantCareScheduler.Infrastructure", "PlantCareScheduler.Infrastructure\PlantCareScheduler.Infrastructure.csproj", "{EAC0144D-719A-4101-8ADA-1A9DEA5E00BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{9079E14F-E716-4576-9D39-26E11F684623}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9079E14F-E716-4576-9D39-26E11F684623}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9079E14F-E716-4576-9D39-26E11F684623}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAC0144D-719A-4101-8ADA-1A9DEA5E00BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAC0144D-719A-4101-8ADA-1A9DEA5E00BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAC0144D-719A-4101-8ADA-1A9DEA5E00BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAC0144D-719A-4101-8ADA-1A9DEA5E00BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,5 +36,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{DEF34E0A-FEAD-4730-81D1-0264E9EED9C5} = {7DFB35B3-7570-4DCB-8B59-7F97033ABA40}
 		{9079E14F-E716-4576-9D39-26E11F684623} = {7DFB35B3-7570-4DCB-8B59-7F97033ABA40}
+		{EAC0144D-719A-4101-8ADA-1A9DEA5E00BF} = {7DFB35B3-7570-4DCB-8B59-7F97033ABA40}
 	EndGlobalSection
 EndGlobal
