@@ -7,4 +7,9 @@ public sealed class PlantResponse
     public int WateringFrequencyDays { get; init; } 
     public DateTime LastWateredDate { get; init; }
     public string Location { get; init; } = string.Empty;
+    public DateTime NextWateringDate { get; init; }
+
+    public string Status { get; set; } = default!;
+    public int DaysUntilNextWatering { get; set; }
+
 }

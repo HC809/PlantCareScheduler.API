@@ -18,15 +18,16 @@ internal sealed class GetPlantsQueryHandler : IQueryHandler<GetPlantsQuery, IEnu
         var container = await _cosmosDbConnectionFactory.CreateContainerAsync();
 
         const string query = """
-            SELECT
-                p.id AS Id,
-                p.Name AS Name,
-                p.Type AS Type,
-                p.WateringFrequencyDays AS WateringFrequencyDays,
-                p.LastWateredDate AS LastWateredDate,
-                p.Location AS Location
-            FROM c AS p
-            """;
+        SELECT
+            p.id AS Id,
+            p.Name AS Name,
+            p.Type AS Type,
+            p.WateringFrequencyDays AS WateringFrequencyDays,
+            p.LastWateredDate AS LastWateredDate,
+            p.NextWateringDate AS NextWateringDate,
+            p.Location AS Location
+        FROM c AS p
+        """;
 
         var queryDefinition = new QueryDefinition(query);
 
@@ -37,7 +38,24 @@ internal sealed class GetPlantsQueryHandler : IQueryHandler<GetPlantsQuery, IEnu
         while (iterator.HasMoreResults)
         {
             var response = await iterator.ReadNextAsync();
-            plants.AddRange(response.ToList());
+            foreach (var plant in response)
+            {
+                var today = DateTime.UtcNow.Date;
+                var nextWateringDate = plant.NextWateringDate;
+                var daysRemaining = (nextWateringDate - today).Days;
+
+                string status = daysRemaining switch
+                {
+                    < 0 => "Overdue", 
+                    <= 2 => "Due Soon", 
+                    _ => "OK" 
+                };
+
+                plant.Status = status;
+                plant.DaysUntilNextWatering = daysRemaining;
+
+                plants.Add(plant);
+            }
         }
 
         return plants;

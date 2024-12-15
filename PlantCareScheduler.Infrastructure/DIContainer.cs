@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using PlantCareScheduler.Application.Data;
 using PlantCareScheduler.Domain.Abstractions;
 using PlantCareScheduler.Domain.Plants;
+using PlantCareScheduler.Domain.Waterings;
 using PlantCareScheduler.Infrastructure.Data;
 using PlantCareScheduler.Infrastructure.Repositories;
 
@@ -30,6 +31,7 @@ public static class DIContainer
         });
 
         services.AddScoped<IPlantRepository, PlantRepository>();
+        services.AddScoped<IWateringRepository, WateringRepository>();
 
         services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<ApplicationDbContext>());
 

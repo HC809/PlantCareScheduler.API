@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using PlantCareScheduler.Domain.Plants;
 
 namespace PlantCareScheduler.Infrastructure.Configurations;
 public class PlantConfiguration : IEntityTypeConfiguration<Plant>
 {
-    public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Plant> builder)
+    public void Configure(EntityTypeBuilder<Plant> builder)
     {
         builder.ToContainer("Plants");
         builder.HasKey(p => p.Id);

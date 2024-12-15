@@ -7,4 +7,9 @@ internal sealed class PlantRepository : Repository<Plant>, IPlantRepository
     {
 
     }
+
+    public void Update(Plant plant, CancellationToken cancellationToken = default)
+    {
+        _dbContext.Update(plant);
+    }
 }
