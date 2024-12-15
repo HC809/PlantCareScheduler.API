@@ -20,11 +20,11 @@ internal sealed class GetPlantsQueryHandler : IQueryHandler<GetPlantsQuery, IEnu
         const string query = """
             SELECT
                 p.id AS Id,
-                p.name AS Name,
-                p.type AS Type,
-                p.wateringFrequencyDays AS WateringFrequencyDays,
-                p.lastWateredDate AS LastWateredDate,
-                p.location AS Location
+                p.Name AS Name,
+                p.Type AS Type,
+                p.WateringFrequencyDays AS WateringFrequencyDays,
+                p.LastWateredDate AS LastWateredDate,
+                p.Location AS Location
             FROM c AS p
             """;
 

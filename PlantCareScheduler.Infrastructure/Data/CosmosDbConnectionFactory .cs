@@ -21,7 +21,7 @@ internal sealed class CosmosDbConnectionFactory : ICosmosDbConnectionFactory
 
         var container = await database.Database.CreateContainerIfNotExistsAsync(
             _containerName,
-            partitionKeyPath: "/type" 
+            partitionKeyPath: "/Type" 
         );
 
         return container.Container;

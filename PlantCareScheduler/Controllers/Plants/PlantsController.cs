@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using PlantCareScheduler.Application.Plants.GetPlants;
 using PlantCareScheduler.Application.Plants.RegisterPlant;
 
 namespace PlantCareScheduler.API.Controllers.Plants;
@@ -13,6 +14,15 @@ public class PlantsController : ControllerBase
     public PlantsController(ISender sender)
     {
         _sender = sender;  
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetPlants(CancellationToken cancellationToken)
+    {
+        var query = new GetPlantsQuery();
+        var result = await _sender.Send(query, cancellationToken);
+
+        return result.IsSuccess ? Ok(result.Value) : NotFound();
     }
 
     [HttpPost]
