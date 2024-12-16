@@ -5,7 +5,7 @@ The Plant Care Scheduler API is designed to help users manage plant care schedul
 
 ---
 
-### API: Publicada en Azure, puede ser accedida a través de este enlace:
+### API: Published in Azure, it can be accessed through this link:
 https://plant-care-app-f5eydgdgaxayekfe.centralus-01.azurewebsites.net/swagger/index.html
 
 ## Setup Instructions
