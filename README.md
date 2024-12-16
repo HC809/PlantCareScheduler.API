@@ -1,4 +1,4 @@
-# Plant Care Scheduler API
+# Plant Care Scheduler API 🌱
 
 ## Overview
 The Plant Care Scheduler API is designed to help users manage plant care schedules by tracking watering dates, calculating the next watering date, and determining the current status of plants. The API follows the principles of **Clean Architecture**, ensuring modularity, maintainability, and scalability.
@@ -25,7 +25,7 @@ https://plant-care-app-f5eydgdgaxayekfe.centralus-01.azurewebsites.net/swagger/i
 The job description emphasized the importance of expertise in Azure and document-based databases. Cosmos DB was chosen as the ideal solution for this project due to its seamless integration with Azure services, scalability, and support for document-based data storage.
 
 
-# Technical Overview
+# Technical Overview ✨
 
 ## Persistence
 * Azure Cosmos DB is used for storing plant and watering data.
@@ -75,7 +75,7 @@ Data access logic is centralized using the Repository Pattern.
 * Due Soon: nextWateringDate is within the next 2 days.
 * Overdue: Today's date > nextWateringDate.
 
-# Limitations
+# Limitations 🛠️
 ## Unit Tests: Not implemented due to time constraints. For testing, I typically use:
 * xUnit: For unit testing.
 * FluentAssertions: For expressive assertions.
