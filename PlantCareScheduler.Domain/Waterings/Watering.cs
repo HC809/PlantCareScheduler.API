@@ -7,10 +7,11 @@ public sealed class Watering : Entity
     {
         Id = id;
         PlantId = plantId;
+        WateringDate = wateringDate;
     }
 
     public Guid PlantId { get; private set; }
-    public DateOnly WateringDate { get; private set; }
+    public DateTime WateringDate { get; private set; }
 
     public static Watering Create(Guid plantId, DateTime wateringDate)
     {

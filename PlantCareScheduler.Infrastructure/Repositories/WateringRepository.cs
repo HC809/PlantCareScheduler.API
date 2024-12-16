@@ -9,11 +9,16 @@ internal sealed class WateringRepository : Repository<Watering>, IWateringReposi
 
     }
 
-    public async Task<Watering?> GetByPlantIdAndDateAsync(Guid plantId, DateOnly date, CancellationToken cancellationToken = default)
+    public async Task<Watering?> GetByPlantIdAndDateAsync(Guid plantId, DateTime date, CancellationToken cancellationToken = default)
     {
+        var startOfDay = date.Date; 
+        var endOfDay = date.Date.AddDays(1).AddTicks(-1); 
+
         return await _dbContext.Set<Watering>()
             .FirstOrDefaultAsync(
-                x => x.PlantId == plantId && x.WateringDate == date,
+                x => x.PlantId == plantId &&
+                     x.WateringDate >= startOfDay &&
+                     x.WateringDate <= endOfDay,
                 cancellationToken
             );
     }

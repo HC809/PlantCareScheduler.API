@@ -26,7 +26,7 @@ internal sealed class RegisterWateringCommandHandler : ICommandHandler<RegisterW
         if (plant == null)
             return Result.Failure<Guid>(PlantErrors.PlantNotFound);
 
-        var existingWatering = await _wateringRepository.GetByPlantIdAndDateAsync(request.PlantId, DateOnly.FromDateTime(DateTime.UtcNow));
+        var existingWatering = await _wateringRepository.GetByPlantIdAndDateAsync(request.PlantId, DateTime.UtcNow);
         if (existingWatering != null)
             return Result.Failure<Guid>(WateringErrors.AlreadyWateredToday);
 
