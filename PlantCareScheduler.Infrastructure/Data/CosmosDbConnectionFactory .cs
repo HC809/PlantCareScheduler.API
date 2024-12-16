@@ -6,22 +6,20 @@ internal sealed class CosmosDbConnectionFactory : ICosmosDbConnectionFactory
 {
     private readonly CosmosClient _cosmosClient;
     private readonly string _databaseName;
-    private readonly string _containerName;
 
-    public CosmosDbConnectionFactory(string endpointUri, string primaryKey, string databaseName, string containerName)
+    public CosmosDbConnectionFactory(string endpointUri, string primaryKey, string databaseName)
     {
         _cosmosClient = new CosmosClient(endpointUri, primaryKey);
         _databaseName = databaseName;
-        _containerName = containerName;
     }
 
-    public async Task<Container> CreateContainerAsync()
+    public async Task<Container> CreateContainerAsync(string containerName, string partitionKey)
     {
         var database = await _cosmosClient.CreateDatabaseIfNotExistsAsync(_databaseName);
 
         var container = await database.Database.CreateContainerIfNotExistsAsync(
-            _containerName,
-            partitionKeyPath: "/Type" 
+            containerName,
+            partitionKeyPath: partitionKey
         );
 
         return container.Container;

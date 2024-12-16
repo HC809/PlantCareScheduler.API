@@ -23,7 +23,6 @@ public static class DIContainer
         var accountEndpoint = configuration["Cosmos:EndpointUri"] ?? throw new ArgumentNullException(nameof(configuration));
         var accountKey = configuration["Cosmos:PrimaryKey"] ?? throw new ArgumentNullException(nameof(configuration));
         var databaseName = "PlantCareDB";
-        var containerName = "Plants";
 
         services.AddDbContext<ApplicationDbContext>(options =>
         {
@@ -37,7 +36,7 @@ public static class DIContainer
 
         services.AddSingleton<ICosmosDbConnectionFactory>(provider =>
         {
-            return new CosmosDbConnectionFactory(accountEndpoint, accountKey, databaseName, containerName);
+            return new CosmosDbConnectionFactory(accountEndpoint, accountKey, databaseName);
         });
     }
 

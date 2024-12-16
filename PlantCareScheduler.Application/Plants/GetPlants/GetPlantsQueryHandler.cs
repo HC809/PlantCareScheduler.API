@@ -15,19 +15,19 @@ internal sealed class GetPlantsQueryHandler : IQueryHandler<GetPlantsQuery, IEnu
 
     public async Task<Result<IEnumerable<PlantResponse>>> Handle(GetPlantsQuery request, CancellationToken cancellationToken)
     {
-        var container = await _cosmosDbConnectionFactory.CreateContainerAsync();
+        var container = await _cosmosDbConnectionFactory.CreateContainerAsync("Plants", "/Type");
 
         const string query = """
-        SELECT
-            p.id AS Id,
-            p.Name AS Name,
-            p.Type AS Type,
-            p.WateringFrequencyDays AS WateringFrequencyDays,
-            p.LastWateredDate AS LastWateredDate,
-            p.NextWateringDate AS NextWateringDate,
-            p.Location AS Location
-        FROM c AS p
-        """;
+            SELECT
+                p.id AS Id,
+                p.Name AS Name,
+                p.Type AS Type,
+                p.WateringFrequencyDays AS WateringFrequencyDays,
+                p.LastWateredDate AS LastWateredDate,
+                p.NextWateringDate AS NextWateringDate,
+                p.Location AS Location
+            FROM c AS p
+            """;
 
         var queryDefinition = new QueryDefinition(query);
 

@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using PlantCareScheduler.Application.Watering.RegisterWatering;
+using PlantCareScheduler.Application.Watering.WateringHistory;
 
 namespace PlantCareScheduler.API.Controllers.Watering;
 [Route("api/watering")]
@@ -18,6 +19,17 @@ public class WateringController : ControllerBase
     {
         var command = new RegisterWateringCommand(request.PlantId);
         var result = await _sender.Send(command, cancellationToken);
+
+        if (result.IsFailure) return BadRequest(result.Error);
+
+        return Ok(result.Value);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetWateringHistory(CancellationToken cancellationToken)
+    {
+        var query = new GetWateringHistoryQuery();
+        var result = await _sender.Send(query, cancellationToken);
 
         if (result.IsFailure) return BadRequest(result.Error);
 
